@@ -18,7 +18,9 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
+:root{
+  --primary-color : #005f8c;
+}
 body {
   color: #6c6c6f;
   background-color: #fff;
@@ -133,7 +135,8 @@ section {
 }
 
 .btn-filled {
-  background-color: #ff7214;
+  /* background-color: #ff7214; */
+  background-color: var(--primary-color);
 }
 
 .btn-filled:hover {
@@ -143,7 +146,8 @@ section {
 }
 
 .btn-default {
-  background-color: #ff7214;
+  /* background-color: #ff7214; */
+  background-color: var(--primary-color);
   border-radius: 50px;
   color: #fff;
 }
@@ -173,7 +177,8 @@ section {
 }
 
 .tagline {
-  color: #ff7214;
+  /* color: #ff7214; */
+  color: var(--primary-color);
   display: block;
   font-size: 14px;
   font-weight: 500;
@@ -194,7 +199,8 @@ section {
 }
 
 .tagline.bar:after {
-  background-color: #ff7214;
+  /* background-color: #ff7214; */
+  background-color: var(--primary-color);
   content: '';
   position: absolute;
   top: 50%;
@@ -282,7 +288,8 @@ section {
 }
 
 .video-btn {
-  background-color: #ff7214;
+  /* background-color: #ff7214; */
+  background-color: var(--primary-color);
   color: #fff;
   display: block;
   font-size: 18px;
@@ -305,7 +312,8 @@ section {
           animation: beat infinite 1.2s;
   height: 100%;
   width: 100%;
-  background-color: #ff7214;
+  /* background-color: #ff7214; */
+  background-color: var(--primary-color);
   border-radius: 50%;
   z-index: -1;
 }
@@ -355,7 +363,8 @@ section {
 }
 
 .read-more:hover {
-  color: #ff7214;
+  /* color: #ff7214; */
+  color: var(--primary-color);
 }
 
 /**
@@ -1159,7 +1168,8 @@ section {
 }
 
 .single-memb a:hover, .post-item a:hover {
-  color: #ff7214;
+  /* color: #ff7214; */
+  color: var(--primary-color);
 }
 
 @media screen and (max-width: 767px) {

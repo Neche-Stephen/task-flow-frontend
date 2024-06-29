@@ -43,14 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${task.taskResponseInfo.status}</td>
                 <td>
                     <a href="editTask.html?taskId=${task.taskResponseInfo.id}" class="edit-btn">Edit</a>
-                    <a href="javascript:void(0);" class="delete-btn">Delete</a>
+                    <a href="javascript:void(0);" class="delete-btn" onclick="deleteTask(${task.taskResponseInfo.id})">Delete</a>
                 </td>
             `;
             taskTableBody.appendChild(row);
-
-            // Attach event listener to delete button
-            const deleteButton = row.querySelector('.delete-btn');
-            deleteButton.addEventListener('click', () => deleteTask(task.taskResponseInfo.id));
         });
     }
 
@@ -98,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
             filteredTasks = allTasks;
         }
 
+        console.log("filtered tasks by status", filteredTasks);
+
         // Filter by priority using the filteredTasks array
         if (priority !== 'all') {
             filteredTasks = filteredTasks.filter(task => task.taskResponseInfo.priorityLevel.toUpperCase() === priority);
@@ -110,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function deleteTask(taskId) {
         if (confirm('Are you sure you want to delete this task?')) {
             try {
-                const response = await fetch(`http://localhost:8080/api/tasks/delete-task/${taskId}`, {
+                const response = await fetch(`http://localhost:8080/api/tasks/${taskId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

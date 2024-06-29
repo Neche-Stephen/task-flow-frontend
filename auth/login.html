@@ -53,7 +53,9 @@
                     if (data.responseCode === '002') {
                         // Handle successful login
                         console.log(data);
-                        window.location.href = '/home-01.html';
+                       localStorage.setItem("Token", data.loginInfo.token);
+                        console.log(localStorage.getItem('Token'));
+                        window.location.href = '/dashboard.html';
                     } else {
                         // Handle errors
                         alert('Login failed: ' + data.responseMessage);

@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskTableBody = document.querySelector('#taskTable tbody');
     const statusFilter = document.getElementById('statusFilter');
     const priorityFilter = document.getElementById('priorityFilter');
+    const spinner = document.getElementById('spinner'); // Spinner element
+    const tableContainer = document.querySelector('.table-container'); // Table container element
     let allTasks = []; // To store all tasks fetched initially
+
 
     // Function to fetch all tasks from backend
     async function fetchTasks() {

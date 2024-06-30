@@ -1,15 +1,9 @@
 /* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
+.main-table-container{
+    background-color: white;
+    padding:20px;
+    border-radius: 10px;
 
-body {
-    background-color: #fff;
-    color: #333;
-    padding: 20px;
 }
 
 .filter-controls {

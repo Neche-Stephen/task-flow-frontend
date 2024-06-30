@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .task-detail-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .task-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .task-detail-header h2 {
+            margin: 0;
+            color: #00BFFF;
+        }
+        .back-to-dashboard {
+            color: #00BFFF;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .task-detail-item {
+            margin-bottom: 1rem;
+        }
+        .task-detail-item span {
+            font-weight: bold;
+            color: #005f8c;
+        }
+        .task-detail-item p {
+            margin: 0.5rem 0 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        .button-container a {
+            background: #00BFFF;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+        .button-container a:hover {
+            background: #007bbd;
+        }
+    </style>
+</head>
+<body>
+    <div class="task-detail-container">
+        <div class="task-detail-header">
+            <h2>Task Details</h2>
+            <a href="dashboard.html" class="back-to-dashboard"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+        <div class="task-detail-item">
+            <span>Title:</span>
+            <p>Build something</p>
+        </div>
+        <div class="task-detail-item">
+            <span>Description:</span>
+            <p>Build an expenses tracker</p>
+        </div>
+        <div class="task-detail-item">
+            <span>Deadline:</span>
+            <p>14/04/2024</p>
+        </div>
+        <div class="task-detail-item">
+            <span>Priority Level:</span>
+            <p>MEDIUM</p>
+        </div>
+        <div class="task-detail-item">
+            <span>Status:</span>
+            <p>Completed</p>
+        </div>
+        <div class="button-container">
+            <a href="editTask.html">Edit Task</a>
+        </div>
+    </div>
+</body>
+</html>

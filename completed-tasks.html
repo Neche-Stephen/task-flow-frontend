@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Tasks</title>
+    <link rel="stylesheet" href="css/completed-tasks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+    <div class="table-container">
+        <table id="taskTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Priority Level</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows will be inserted here -->
+            </tbody>
+        </table>
+        <a href="dashboard.html" class="back-link">Back to Dashboard</a>
+    </div>
+   
+    <script>
+        // Function to fetch completed tasks
+        async function fetchCompletedTasks() {
+            try {
+                const response = await fetch('http://localhost:8080/api/tasks/completed-task', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('Token')}` // Assuming you store the token in sessionStorage
+                    }
+                });
+
+                if (response.ok) {
+                    const tasks = await response.json();
+                    console.log(tasks);
+                    populateTable(tasks);
+                } else {
+                    console.error('Failed to fetch tasks:', response.statusText);
+                    alert('Error fetching completed tasks. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Function to populate the table with tasks
+        function populateTable(tasks) {
+            const tableBody = document.querySelector('#taskTable tbody');
+            tableBody.innerHTML = '';
+
+            tasks.forEach(task => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${task.taskResponseInfo.title}</td>
+                    <td>${task.taskResponseInfo.description}</td>
+                    <td>${task.taskResponseInfo.deadline}</td>
+                    <td>${task.taskResponseInfo.priorityLevel}</td>
+                    <td>${task.taskResponseInfo.status}</td>
+                    <td>
+                        <a href="editTask.html?taskId=${task.taskResponseInfo.id}" class="edit-btn">Edit</a>
+                        <a href="javascript:void(0);" class="delete-btn" onclick="deleteTask(${task.taskResponseInfo.id})">Delete</a>
+                    </td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to delete a task (needs implementation on the backend)
+        async function deleteTask(id) {
+            try {
+                const response = await fetch(`http://localhost:8080/api/tasks/delete-task/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('Token')}` // Assuming you store the token in sessionStorage
+                    }
+                });
+
+                if (response.ok) {
+                    // Remove the task row from the table
+                    fetchCompletedTasks(); // Refresh the table after deletion
+                } else {
+                    console.error('Failed to delete task:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Fetch and populate the table when the page loads
+        document.addEventListener('DOMContentLoaded', fetchCompletedTasks);
+    </script>
+</body>
+</html>

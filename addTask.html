@@ -133,7 +133,14 @@
                     <option value="HIGH">High</option>
                 </select>
             </div>
-        
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" required disabled>
+                    <option value="PENDING" selected>Pending</option>
+                    <option value="IN_PROGRESS">In Progress</option>
+                    <option value="COMPLETED">Completed</option>
+                </select>                
+            </div>
             <button type="submit" class="btn">Create Task</button>
             
         </form>

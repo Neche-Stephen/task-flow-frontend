@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to fetch all tasks from backend
     async function fetchTasks() {
-        console.log(localStorage.getItem('Token'))
         try {
+            spinner.style.display = 'block'; // Show spinner during fetch
             const response = await fetch('http://localhost:8080/api/tasks/get-all-task', {
                 method: 'GET',
                 headers: {
@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error('Error fetching tasks:', error);
             alert('Error fetching tasks. Please try again.');
+        } finally {
+            spinner.style.display = 'none'; // Hide spinner after fetch completes
+            tableContainer.style.display = 'block'; // Show table container after tasks are fetched
         }
     }
 
@@ -69,6 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const status = statusFilter.value;
         const priority = priorityFilter.value;
 
+        spinner.style.display = 'block'; // Show spinner during filtering
+
         let filteredTasks = [];
 
         // Filter by status using API
@@ -91,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('Error fetching tasks by status:', error);
                 alert('Error fetching tasks by status. Please try again.');
+                spinner.style.display = 'none'; // Hide spinner on error
                 return;
             }
         } else {
@@ -104,11 +110,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         populateTable(filteredTasks);
+
+        spinner.style.display = 'none'; // Hide spinner after filtering
     }
 
     // Function to delete a task
     async function deleteTask(taskId) {
         if (confirm('Are you sure you want to delete this task?')) {
+            spinner.style.display = 'block'; // Show spinner during delete
             try {
                 const response = await fetch(`http://localhost:8080/api/tasks/delete-task/${taskId}`, {
                     method: 'DELETE',
@@ -130,6 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('Error deleting task:', error);
                 alert('Error deleting task. Please try again.');
+            } finally {
+                spinner.style.display = 'none'; // Hide spinner after delete completes
             }
         }
     }

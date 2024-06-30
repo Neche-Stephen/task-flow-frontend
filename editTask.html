@@ -141,8 +141,18 @@
                     <option value="COMPLETED">Completed</option>
                 </select>
             </div>
+<<<<<<< HEAD
             <button type="submit" class="btn">Update Task</button>
             
+=======
+            <button type="submit" class="btn" id="updateBtn">
+                <span id="updateBtnText">Update Task</span>
+                <span id="updateSpinner" class="spinner" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </span>
+            </button>
+            <a href="dashboard.html" class="back-link">Back to Dashboard</a>
+>>>>>>> 9613446077d7c9eddf0c098c602fbdfc3a780691
         </form>
     </div>
 </div>
@@ -150,6 +160,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const editTaskForm = document.getElementById('editTaskForm');
+            const updateBtnText = document.getElementById('updateBtnText');
+            const updateSpinner = document.getElementById('updateSpinner');
 
             // Function to get the task ID from URL query parameters
             function getTaskIdFromUrl() {
@@ -159,7 +171,6 @@
 
             // Function to fetch task details and populate the form
             async function fetchTaskDetails(taskId) {
-                
                 try {
                     const response = await fetch(`http://localhost:8080/api/tasks/get-task/${taskId}`, {
                         method: 'GET',
@@ -174,7 +185,6 @@
                     }
 
                     const task = await response.json();
-                    console.log(task);
                     document.getElementById('edit-title').value = task.taskResponseInfo.title;
                     document.getElementById('edit-description').value = task.taskResponseInfo.description;
                     document.getElementById('edit-deadline').value = task.taskResponseInfo.deadline.split('T')[0]; // Extract date part
@@ -199,14 +209,16 @@
                     status: editTaskForm.status.value
                 };
 
-                console.log("updatedtask", updateTask)
-
                 try {
+                    // Show spinner and hide text
+                    updateBtnText.style.display = 'none';
+                    updateSpinner.style.display = 'inline-block';
+
                     const response = await fetch(`http://localhost:8080/api/tasks/edit-task/${taskId}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + localStorage.getItem('Token') 
+                            'Authorization': 'Bearer ' + localStorage.getItem('Token')
                         },
                         body: JSON.stringify(updatedTask)
                     });
@@ -221,6 +233,10 @@
                 } catch (error) {
                     console.error('Error updating task:', error);
                     alert('Error updating task. Please try again.');
+                } finally {
+                    // Hide spinner and show text
+                    updateBtnText.style.display = 'inline';
+                    updateSpinner.style.display = 'none';
                 }
             }
 
@@ -230,8 +246,7 @@
                 fetchTaskDetails(taskId);
             } else {
                 alert('No task ID found. Please try again.');
-                // window.location.href = 'dashboard.html'; 
-                // Redirect to dashboard if no task ID found
+                window.location.href = 'dashboard.html'; // Redirect to dashboard if no task ID found
             }
 
             // Event listener for form submission

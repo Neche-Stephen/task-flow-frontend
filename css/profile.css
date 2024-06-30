@@ -1,19 +1,13 @@
 /* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-body {
+.form-main-container{
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f2f2f2;
+    align-items: start;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    height:100vh;
 }
-
 .profile-card {
     background-color: #ffffff;
     width: 320px;
@@ -22,6 +16,8 @@ body {
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border:1px dotted #005f8c;
+    
 }
 
 .profile-card:hover {

@@ -18,7 +18,7 @@ body{
     top:0;
     left:0;
     bottom:0;
-    width:135px;
+    width:295px;
     height:100vh; /*already here, full height of the viewport*/
     padding:0 1.7rem;
     color: #ffff;
@@ -30,7 +30,7 @@ body{
     background:rgb(209, 240, 255);
 }
 .sidebar:hover{
-    width:295px;
+    /*width:295px;*/
     transition:0.5s;
 }
 .logo{

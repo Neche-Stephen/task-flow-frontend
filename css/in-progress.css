@@ -1,29 +1,8 @@
 /* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-body {
-    background-color: #fff;
-    color: #333;
-    padding: 20px;
-}
-
-.filter-controls {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.filter-controls select {
-    padding: 10px;
-    border: 1px solid #00BFFF;
-    border-radius: 5px;
-    background-color: #D1F0FF;
-    color: #005f8c;
+.main-table-container{
+    background-color: white;
+    padding:20px;
+    border-radius: 10px; 
 }
 
 .table-container {

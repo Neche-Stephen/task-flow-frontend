@@ -20,6 +20,7 @@
 <body>
     <div id="success" class="center hidden">
         <h1>EMAIL CONFIRMED SUCCESSFULLY, LOGIN <a href="/login">HERE</a></h1>
+        
     </div>
     <div id="failure" class="center hidden">
         <h1>EMAIL CONFIRMATION FAILED. PLEASE TRY AGAIN.</h1>
@@ -27,6 +28,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            
             const params = new URLSearchParams(window.location.search);
             const token = params.get('token');
 
@@ -37,9 +39,11 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.message === 'Email confirmed successfully') {
-                        document.getElementById('success').classList.remove('hidden');
+                        // document.getElementById('success').classList.remove('hidden');
+                        window.location.href = "../email-success.html"
                     } else {
-                        document.getElementById('failure').classList.remove('hidden');
+                        // document.getElementById('failure').classList.remove('hidden');
+                        window.location.href = "../email-failed.html"
                     }
                 })
                 .catch(error => {
@@ -47,7 +51,10 @@
                     document.getElementById('failure').classList.remove('hidden');
                 });
             } else {
-                document.getElementById('failure').classList.remove('hidden');
+                // document.getElementById('failure').classList.remove('hidden');
+                window.location.href = "../email-failed.html"
+
+
             }
         });
     </script>

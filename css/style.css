@@ -552,7 +552,8 @@ section {
 }
 
 #mobile-menu-toggler:hover {
-  color: #ff7214;
+  /* color: #ff7214; */
+  color: var(--primary-color);
 }
 
 @media screen and (min-width: 992px) {
@@ -700,7 +701,8 @@ section {
 }
 
 .navbar-nav li a li.current-menu-item a, .navbar-nav li a:hover {
-  color: #ff7214;
+  /* color: #ff7214; */
+  color: var(--primary-color);
 }
 
 .navbar-nav li .sub-menu {
@@ -1114,6 +1116,7 @@ section {
 /*************************
  * Team section
  */
+
 .team .single-memb, .team .post-item {
   padding: 15px;
   text-align: center;

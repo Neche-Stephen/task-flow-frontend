@@ -104,10 +104,10 @@
             <div class="user--info">
                 <div class="search--box">
                 <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Search"/>
+                <input type="text" id="task-search-input" placeholder="Search by title..."/>
             </div>
             <div class="welcome-message">
-                Welcome Dami! xyz
+                Welcome!
             </div>
             </div>
         </div>
@@ -346,7 +346,7 @@
             document.getElementById('logout-button').addEventListener('click', logout);
         });
     </script> -->
-  <script>
+  <!-- <script>
     document.addEventListener('DOMContentLoaded', () => {
     // Check if token exists in localStorage
     if (!localStorage.getItem('Token')) {
@@ -410,7 +410,7 @@ async function fetchTasks() {
                     <td><a  href="javascript:void(0);" class="delete--btn" onclick="deleteTask('${task.id}')">Delete</a></td>
                 </tr>
             `;
-            taskTableBody.insertAdjacentHTML('beforeend', row);
+            taskTableBody.insertAdjacentHTML('afterbegin', row);
         });
 
         const pending = document.getElementById('pending-count');
@@ -424,6 +424,189 @@ async function fetchTasks() {
         console.error('Error fetching tasks:', error);
         // Handle error if needed
     }
+}
+
+async function fetchUserProfile() {
+    try {
+        const response = await fetch('http://localhost:8080/api/user/profile', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('Token')
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch user profile');
+        }
+
+        const userProfile = await response.json();
+        console.log("user profile", userProfile);
+        updateWelcomeMessage(userProfile.userProfileResponseInfo.firstName); // Update welcome message with user's first name
+
+    } catch (error) {
+        console.error('Error fetching user profile:', error);
+        // Handle error if needed
+    }
+}
+
+function updateWelcomeMessage(firstName) {
+    const welcomeMessage = document.querySelector('.welcome-message');
+    if (welcomeMessage) {
+        welcomeMessage.textContent = `Welcome ${firstName}!`;
+    }
+}
+
+async function deleteTask(taskId) {
+    if (confirm('Are you sure you want to delete this task?')) {
+        try {
+            const response = await fetch(`http://localhost:8080/api/tasks/delete-task/${taskId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('Token') // Assuming token is stored in localStorage
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete task');
+            }
+
+            // After deleting, re-fetch tasks to update the table
+            fetchTasks();
+
+            alert('Task deleted successfully!');
+        } catch (error) {
+            console.error('Error deleting task:', error);
+            alert('Error deleting task. Please try again.');
+        }
+    }
+}
+
+async function logout() {
+    try {
+        const response = await fetch('http://localhost:8080/api/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('Token')
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to logout');
+        }
+
+        // Clear local storage and redirect to login page
+        localStorage.removeItem('Token');
+        alert('Logged out successfully!');
+        window.location.href = '/auth/login.html';
+    } catch (error) {
+        console.error('Error logging out:', error);
+        alert('Error logging out. Please try again.');
+    }
+}
+
+  </script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Check if token exists in localStorage
+    if (!localStorage.getItem('Token')) {
+        // Redirect to login page if token is missing
+        window.location.href = '/auth/login.html';
+        return;
+    }
+
+    const spinner = document.getElementById('spinner');
+    const mainContent = document.querySelector('.sub-main--content');
+    const taskSearchInput = document.getElementById('task-search-input');
+
+    // Fetch user profile and tasks
+    Promise.all([fetchUserProfile(), fetchTasks()])
+        .then(() => {
+            // Hide spinner
+            spinner.style.display = 'none';
+            // Display main content
+            mainContent.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            // Handle error if needed
+            spinner.style.display = 'none'; // Hide spinner on error as well
+            // Optionally show an error message or retry button
+        });
+
+    document.getElementById('logout-button').addEventListener('click', logout);
+
+    taskSearchInput.addEventListener('input', () => {
+        const searchTerm = taskSearchInput.value.trim().toLowerCase();
+        filterTasks(searchTerm);
+    });
+});
+
+async function fetchTasks() {
+    try {
+        const response = await fetch('http://localhost:8080/api/tasks/get-all-task', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('Token') // assuming you are storing JWT in localStorage
+            }
+        });
+        const tasks = await response.json();
+        console.log("tasks", tasks);
+        displayTasks(tasks);
+    } catch (error) {
+        console.error('Error fetching tasks:', error);
+        // Handle error if needed
+    }
+}
+
+function displayTasks(tasks) {
+    let pendingCount = 0;
+    let completedCount = 0;
+    let inProgressCount = 0;
+    const taskTableBody = document.getElementById('task-table-body');
+    taskTableBody.innerHTML = '';
+
+    tasks.slice(0, 5).forEach(taskDto => {
+        const task = taskDto.taskResponseInfo;
+        let statusClass = '';
+        if (task.status === 'PENDING') pendingCount++;
+        else if (task.status === 'COMPLETED') completedCount++;
+        else if (task.status === 'IN_PROGRESS') inProgressCount++;
+
+        const row = `
+            <tr>
+                <td>${task.title}</td>
+                <td>${task.description}</td>
+                <td>${task.deadline}</td>
+                <td>${task.priorityLevel}</td>
+                <td>${task.status}</td>
+                <td><a href="editTask.html?taskId=${task.id}" class="edit--btn">Edit</a></td>
+                <td><a href="javascript:void(0);" class="delete--btn" onclick="deleteTask('${task.id}')">Delete</a></td>
+            </tr>
+        `;
+        taskTableBody.insertAdjacentHTML('beforeend', row);
+    });
+
+    const pending = document.getElementById('pending-count');
+    const completed = document.getElementById('completed-count');
+    const inProgress = document.getElementById('in-progress-count');
+    pending.textContent = pendingCount;
+    completed.textContent = completedCount;
+    inProgress.textContent = inProgressCount;
+}
+
+function filterTasks(searchTerm) {
+    const rows = document.querySelectorAll('#task-table-body tr');
+
+    rows.forEach(row => {
+        const title = row.children[0].textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
 }
 
 async function fetchUserProfile() {

@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tasks.forEach(task => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td><a class="task-link" href="task-detail.html">${task.taskResponseInfo.title}</a></td>
+                <td><a class="task-link" href="task-detail.html?taskId=${task.taskResponseInfo.id}">${task.taskResponseInfo.title}</a></td>
                 <td>${task.taskResponseInfo.description}</td>
                 <td>${formatDate(task.taskResponseInfo.deadline)}</td>
                 <td>${task.taskResponseInfo.priorityLevel}</td>

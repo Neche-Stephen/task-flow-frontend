@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${task.taskResponseInfo.priorityLevel}</td>
                 <td>${task.taskResponseInfo.status}</td>
                 <td>
-                    <a href="editTask.html?taskId=${task.taskResponseInfo.id}" class="edit-btn">Edit</a>
+                    <a href="editTask.html?taskId=${task.taskResponseInfo.id}" class="edit-btn">Edit</a><br><br>
                     <a href="javascript:void(0);" class="delete-btn">Delete</a>
                 </td>
             `;

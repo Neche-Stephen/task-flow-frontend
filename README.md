@@ -5,7 +5,6 @@ TaskFlow is a task management application designed to help individuals efficient
 ## Table of Contents
 1. [Overview](#overview)
 2. [Technologies Used](#tech-stack)
-3. [Project Structure](#project-structure)
 4. [Project Setup](#Project-setup)
 5. [Usage](#usage)
 7. [Contributing](#contributing)

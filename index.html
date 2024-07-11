@@ -1,81 +1,202 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TaskFlow</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="./css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- All CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Task Flow</title>
   </head>
   <body>
-    
 
-   <div class="body-wrapper">
-    <div class="container-fluid page_body shadow">
-            <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg page_navbar">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">TaskFlow</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  
-                </ul>
-                <form class="d-flex" role="search">
-                  <a href="auth/login.html" class="navbar_btn" type="submit">Sign in</a>
-                </form>
+    <!-- Header strat -->
+    <header class="header abs-header">
+      <div class="container">
+        <nav class="navbar">
+          <!-- Site logo -->
+          <a href="home-01.html" class="logo">
+            <h2>Task<span>F</span>low</h2>
+            
+          </a>
+          <a href="javascript:void(0);" id="mobile-menu-toggler">
+            <i class="ti-align-justify"></i>
+          </a>
+          <ul class="navbar-nav">    
+            <li class="current-menu-item">
+              <a href="#">Home</a>
+            </li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="./auth/login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header strat -->
+
+    <!-- Banner section start -->
+    <section class="banner">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 order-1 order-md-0">
+            <div class="content-box">
+              <span class="tagline">Streamline Your Workflow</span>
+              <h2>Effortless Task Management</h2>
+              <p>Stay organized, prioritize your tasks, and boost your productivity with our powerful task management app.</p>
+              <a href="/auth/Register.html" class="btn btn-default">Get Started</a>
+            </div>
+          </div>
+          <div class="col-md-6 order-0 order-md-1">
+            <figure class="ban-img">
+              <img src="images/ban-1.png" alt="Task Management">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Banner section end -->
+
+    <!-- About section start -->
+    <section class="about" id="about">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="about-img-group">
+              <img src="images/liquid-img/bg.png" alt="" class="about-img-bg">
+              <div class="row">
+                <div class="col-md-7">
+                  <img src="images/liquid-img/1.jpg" alt="" class="about-img-1">
+                </div>
+                <div class="col-md-5">
+                  <img src="images/liquid-img/2.jpg" alt="" class="about-img-2">
+                </div>
               </div>
             </div>
-          </nav>
-
-         <div class="main_wrapper">
-            <div class="mt-5 d-flex flex-wrap align-items-center justify-content-center">
-
-                <div class="main-img">
-                    <div class="img_wrapper">
-                        <!-- <img src="./images/image-hero-desktop.png" class="img-fluid" alt=""> -->
-                        <img src="./images/undraw_completed_tasks_vs6q.svg" class="img-fluid" alt="">
-
-                    </div>
-
-                </div>
-                <!-- animate__animated animate__backInDown -->
-                <div class="main-details">
-
-                    <div class="main-title mb-4 animate__animated animate__backInDown">
-                        Manage All Of Your Work In One Place Efficiently
-                    </div>
-
-                    <div class="mb-4">
-                      Master your day and get more work done with less effort.
-                      TaskFlow is your personal assistant for a productive day. Organize, prioritize, and achieve your goals like never before.
-
-                    </div>
-
-                    <div>
-                        <a href="/auth/Register.html"><button>Sign up</button></a> 
-                    </div>
-
-                </div>
-
           </div>
-         </div>
-
-    </div>
-   </div>
-
+          <div class="col-lg-6">
+            <div class="content-box-fluid">
+              <span class="tagline">About TaskFlow</span>
+              <h2>Transforming Task Management</h2>
+              <h5>Your Partner in Productivity</h5>
+              <p>At TaskFlow, we believe in simplifying the way you manage your tasks. Our innovative platform is designed to help you stay organized, meet deadlines, and achieve your goals effortlessly. Join thousands of users who have transformed their workflow with TaskFlow.</p>
+              <a href="#" class="btn btn-default">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
+    <!-- About section end -->
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Team section start -->
+    <section class="team" id="team">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 m-auto">
+            <div class="sec-heading">
+              <span class="tagline">team member</span>
+              <h3 class="sec-title">Our Experieced Team</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-stretch member-row">
+          <div class="col-md-4">
+            <div class="single-memb">
+              <!-- <img src="images/team/1.jpg" alt=""> -->
+              <!-- <img src="neche.png" alt=""> -->
+              <img src="neche.png" alt="">
+              <div class="memb-details">
+                <h5><a href="#">Chinecherem Ubawike</a></h5>
+                <span>CEO</span>
+                
+                <div class="memb-social">
+                  <a href="#">facebook</a>
+                  <a href="#">twitter</a>
+                  <a href="#">skype</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="single-memb">
+              <!-- <img src="images/ejmeba1.jpeg" alt=""> -->
+              <img src="images/eje9.jpg" alt="">
+
+              <div class="memb-details">
+                <h5><a href="#">Onyekachi Ejemba</a></h5>
+                <span>CTO</span>
+                
+                <div class="memb-social">
+                  <a href="#">facebook</a>
+                  <a href="#">twitter</a>
+                  <a href="#">skype</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="single-memb">
+              <img src="images/coke6.png" alt="">
+              <div class="memb-details">
+                <h5><a href="#">Christiana Coker</a></h5>
+                <span>COO</span>
+                
+                <div class="memb-social">
+                  <a href="#">facebook</a>
+                  <a href="#">twitter</a>
+                  <a href="#">skype</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="single-memb">
+              <img src="/images/uche.png" alt="">
+              <div class="memb-details">
+                <h5><a href="#">Uchechukwu Okoro</a></h5>
+                <span>COO</span>
+                
+                <div class="memb-social">
+                  <a href="#">facebook</a>
+                  <a href="#">twitter</a>
+                  <a href="#">skype</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="single-memb">
+              <img src="/images/john1.jpg" alt="">
+              <div class="memb-details">
+                <h5><a href="#">Uchechukwu Okoro</a></h5>
+                <span>COO</span>
+                
+                <div class="memb-social">
+                  <a href="#">facebook</a>
+                  <a href="#">twitter</a>
+                  <a href="#">skype</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Team section end -->
+
+    <!-- JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scripts.js"></script>
   </body>
 </html>

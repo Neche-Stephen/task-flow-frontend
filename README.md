@@ -1,6 +1,14 @@
 # TaskFlow Frontend
 
-TaskFlow is a task management application designed to help individuals efficiently organize their personal tasks and boost productivity. This repository contains the frontend implementation of TaskFlow, built using HTML, CSS, JavaScript, and Bootstrap. The frontend consumes the API provided by the backend, which is developed in Java.
+TaskFlow is a task management application designed to help individuals efficiently organize their personal tasks and boost productivity. This repository contains the frontend implementation of TaskFlow, built using HTML, CSS, JavaScript, and Bootstrap. The frontend consumes the API provided by the backend, which is developed in Java, using Spring boot framework.
+
+## Table of Contents
+1. [Overview](#overview)
+2. [Technologies Used](#tech-stack)
+3. [Project Structure](#project-structure)
+4. [Project Setup](#Project-setup)
+5. [Usage](#usage)
+7. [Contributing](#contributing)
 
 ## Overview
 
@@ -44,10 +52,12 @@ As a user, I want to be able to sign up for an account so that I can access the 
   - Postman
   - GIT
 
-## Getting Started
+## Project Setup
 
 ### Prerequisites
 To run this project, you will need a live backend server for the TaskFlow API. Ensure that the backend is up and running before starting the frontend.
+
+You can access the backend repo here 
 
 ### Installation
 
@@ -57,7 +67,7 @@ To run this project, you will need a live backend server for the TaskFlow API. E
     cd week10-frontend
     ```
 
-2. Open `index.html` in your preferred web browser to view the application.
+2. Open `index.html` in your preferred web browser to view the landing page of the application. You can go ahead to signup or login from the landing page
 
 ## Usage
 

@@ -57,24 +57,23 @@ As a user, I want to be able to sign up for an account so that I can access the 
 ### Prerequisites
 To run this project, you will need a live backend server for the TaskFlow API. Ensure that the backend is up and running before starting the frontend.
 
-You can access the backend repo here 
+You can access the backend repo [here](https://github.com/Neche-Stephen/task-flow-backend.git)
 
 ### Installation
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/Tiana-Coker/week10-frontend.git
-    cd week10-frontend
+    git clone https://github.com/Neche-Stephen/task-flow-frontend.git
+    cd task-flow-frontend
     ```
 
 2. Open `index.html` in your preferred web browser to view the landing page of the application. You can go ahead to signup or login from the landing page
 
+### Landing Page Screenshots
+
+![Screenshot 2024-07-11 at 6 03 46 PM](https://github.com/Neche-Stephen/task-flow-frontend/assets/61988607/2f01d30a-6c85-41dd-9de8-fb2364591a63)
+
 ## Usage
-
-### Screenshots
-![TaskFlow Screenshot](images/taskflow-image.png)
-
-
 
 ### Features
 
@@ -87,6 +86,9 @@ You can access the backend repo here
 
 - **User Interface:**
   - Clean and responsive design using Bootstrap.
+ 
+### Dashboard Screenshots
+![Screenshot 2024-07-10 at 7 00 47 PM](https://github.com/Neche-Stephen/task-flow-frontend/assets/61988607/4cb5c2cb-a582-4a68-b10a-58aeea707b10)
 
 ## Contributing
 
